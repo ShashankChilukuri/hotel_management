@@ -1,0 +1,52 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.hotel-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.login-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-width: 300px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: gray;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
