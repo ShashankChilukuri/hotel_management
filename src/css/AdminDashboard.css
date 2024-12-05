@@ -7,7 +7,7 @@
   
   body, html {
     height: 100%;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
     color: #333;
     overflow: hidden; /* Prevent scrolling on the main body */
@@ -31,53 +31,90 @@
     position: fixed; /* Fixed sidebar */
     left: 0;
     top: 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to the sidebar */
+    transition: all 0.3s ease;
   }
   
   .sidebar h2 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: center;
+    letter-spacing: 1px;
   }
   
   .sidebar button {
     background-color: #34495e;
     color: #ecf0f1;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 18px;
     font-size: 16px;
     margin: 10px 0;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: left;
   }
   
   .sidebar button:hover {
     background-color: #1abc9c;
+    transform: scale(1.05);
+  }
+  
+  .sidebar button:focus {
+    outline: none;
+    background-color: #16a085;
   }
   
   .main-content {
     margin-left: 250px; /* Space for the sidebar */
-    padding: 20px;
+    padding: 30px;
     background-color: #fff;
     height: 100%;
     width: calc(100% - 250px); /* Occupy remaining space */
     overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    transition: margin-left 0.3s ease;
   }
   
   .main-content h1 {
-    font-size: 32px;
+    font-size: 36px;
     color: #2c3e50;
     margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .welcome-section {
+    background-color: #ecf0f1;
+    padding: 50px;
+    margin: 20px;
+    border-radius: 12px;
+    max-width: 650px; /* Limits the width of the section */
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    text-align: center;
+  }
+  
+  .welcome-section h1 {
+    font-size: 34px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .welcome-section p {
+    font-size: 18px;
+    color: #7f8c8d;
+    line-height: 1.6;
   }
   
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 30px;
   }
   
   th, td {
-    padding: 12px;
+    padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
@@ -101,7 +138,6 @@
     background-color: #f1f1f1;
   }
   
-  /* Loading and Error Message */
   .loading {
     color: #f39c12;
     font-size: 18px;
@@ -113,14 +149,14 @@
     font-weight: bold;
   }
   
-  /* Form Inputs */
   input, select, textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 16px;
+    transition: border-color 0.3s ease;
   }
   
   input:focus, select:focus, textarea:focus {
@@ -128,15 +164,14 @@
     outline: none;
   }
   
-  /* Button Styling for Forms */
   button[type="submit"] {
     background-color: #1abc9c;
     color: #fff;
-    padding: 12px 20px;
+    padding: 14px 24px;
     border: none;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: background-color 0.3s ease;
   }
   
@@ -147,11 +182,11 @@
   button[type="reset"] {
     background-color: #e74c3c;
     color: #fff;
-    padding: 12px 20px;
+    padding: 14px 24px;
     border: none;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: background-color 0.3s ease;
   }
   
@@ -159,7 +194,6 @@
     background-color: #c0392b;
   }
   
-  /* Responsive Layout */
   @media screen and (max-width: 768px) {
     .admin-dashboard-container {
       flex-direction: column;
@@ -176,22 +210,4 @@
       width: 100%;
     }
   }
-  .welcome-section {
-    background-color: #ecf0f1;
-    padding: 40px;
-    margin: 20px;
-    border-radius: 8px;
-    max-width: 600px; /* Optional: limits the width of the section */
-    width: 100%;
-  }
   
-  .welcome-section h1 {
-    font-size: 32px;
-    color: #2c3e50;
-    margin-bottom: 15px;
-  }
-  
-  .welcome-section p {
-    font-size: 18px;
-    color: #7f8c8d;
-  }

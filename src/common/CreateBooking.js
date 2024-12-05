@@ -67,7 +67,7 @@ function CreateBooking({ fetchBookings }) {
 
   return (
     <div>
-      <h3>Create Booking</h3>
+      <h1>Create Booking</h1>
       <div className="form-group">
         <label htmlFor="customer">Customer</label>
         <select

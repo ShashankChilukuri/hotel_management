@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchRooms, deleteRoom } from '../api';
+import { fetchRooms } from '../api';
 
 function GetRooms() {
   const [rooms, setRooms] = useState([]);
@@ -25,15 +25,7 @@ function GetRooms() {
     }
   };
 
-  const handleDeleteRoom = async (id) => {
-    try {
-      setError('');
-      await deleteRoom(id);
-      loadRooms(); // Refresh room list after deletion
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+  
 
   const filteredRooms = rooms.filter(room => 
     (filterStatus === 'all' || room.status === filterStatus) &&
@@ -43,7 +35,6 @@ function GetRooms() {
 
   return (
     <div className="container mx-auto p-6 bg-gray-100 min-h-screen">
-      <h3 className="text-3xl font-bold mb-6 text-gray-800">Room Management</h3>
       
       <div className="flex items-center mb-6 space-x-4">
         <div className="relative flex-grow">
@@ -106,15 +97,7 @@ function GetRooms() {
                       {room.status}
                     </span>
                   </td>
-                  <td className="p-4">
-                    <button 
-                      onClick={() => handleDeleteRoom(room.id)} 
-                      disabled={loading}
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 disabled:opacity-50"
-                    >
-                      Delete
-                    </button>
-                  </td>
+                  
                 </tr>
               ))
             )}

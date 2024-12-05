@@ -1,47 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import './css/login.css';
-import axios from 'axios'; // Import axios
+import axios from 'axios';
 
 function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
 
-  // Focus on the username input once on mount
   useEffect(() => {
-    const usernameInput = document.getElementById('username');
-    if (usernameInput) usernameInput.focus();
+    document.getElementById('username')?.focus();
   }, []);
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading state on submit
-    setError(''); // Reset previous errors
+    setLoading(true);
+    setError('');
 
     try {
-      const response = await axios.post('http://localhost:8080/api/users/login', {
-        username: username,
-        password: password,
-      });
+      const response = await axios.post('http://localhost:8080/api/users/login', { username, password });
 
       if (response.status === 200) {
-        // Assuming the user data is returned in response.data
-        onLoginSuccess(response.data); // Pass user data on successful login
+        onLoginSuccess(response.data);
       } else {
-        setError(response.data.message || 'Login failed. Please check your credentials.');
+        setError('Login failed. Please check your credentials.');
       }
     } catch (err) {
-      if (err.response) {
-        // If there's a response error (e.g., 400 or 500 status code)
-        setError(err.response.data.message || 'Login failed. Please check your credentials.');
-      } else {
-        // If there's an error that didn't come from the server (e.g., network error)
-        setError('Server error. Please try again later.');
-      }
+      setError('Server error. Please try again later.');
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
 

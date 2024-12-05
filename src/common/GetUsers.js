@@ -34,7 +34,6 @@ const GetUsers = () => {
 
   return (
     <div className="container mx-auto p-6 bg-gray-100 min-h-screen">
-      <h3 className="text-3xl font-bold mb-6 text-gray-800">User Management</h3>
 
       <div className="flex items-center mb-6 space-x-4">
         <div className="relative flex-grow">

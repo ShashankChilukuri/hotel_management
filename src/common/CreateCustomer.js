@@ -44,7 +44,7 @@ function CreateCustomer({ fetchCustomers }) {
 
   return (
     <div>
-      <h3>Create Customer</h3>
+      
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input

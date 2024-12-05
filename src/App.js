@@ -4,8 +4,6 @@ import Login from './Login';
 import AdminDashboard from './Dashboards/AdminDashboard';
 import ManagerDashboard from './Dashboards/ManagerDashboard';
 import ReceptionistDashboard from './Dashboards/ReceptionistDashboard';
-import AddRoom from './common/AddRoom';  
-import AddBooking from './common/AddBooking';  
 import './css/App.css';
 
 function App() {
@@ -46,7 +44,7 @@ function App() {
 
   return (
     <Router>
-      <div className="app-container">
+      <div >
         <Routes>
           {/* Route for the login page */}
           <Route
@@ -67,15 +65,7 @@ function App() {
             element={user && user.role.toLowerCase() === 'receptionist' ? <ReceptionistDashboard user={user} onLogout={handleLogout} /> : <Navigate to="/" />}
           />
           {/* Route for adding a room */}
-          <Route
-            path="/add-room"
-            element={user && user.role.toLowerCase() === 'admin' ? <AddRoom /> : <Navigate to="/" />}
-          />
-          {/* Route for adding a booking */}
-          <Route
-            path="/add-booking"
-            element={user && user.role.toLowerCase() === 'admin' ? <AddBooking /> : <Navigate to="/" />}
-          />
+         
         </Routes>
       </div>
     </Router>

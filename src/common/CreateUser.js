@@ -30,7 +30,6 @@ const CreateUser = () => {
 
   return (
     <div className="container">
-      <h2>Create User</h2>
       {error && <p className="error-message">{error}</p>}
       {success && <p className="success-message">{success}</p>}
 

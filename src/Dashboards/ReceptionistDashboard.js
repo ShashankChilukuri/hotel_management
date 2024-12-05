@@ -31,54 +31,52 @@ function ReceptionistDashboard({onLogout}) {
 
       {/* Main content */}
       <div className="main-content">
-        <h1>{currentSection.replace(/([A-Z])/g, ' $1').toUpperCase()}</h1>
-
+      <h1><h2>Receptionist Dashboard</h2></h1>
         {currentSection === 'Home' && (
           <div className="welcome-section">
-            <h1>Welcome to the Receptionist Dashboard</h1>
-            <p>Manage rooms, bookings, customers easily from the sidebar.</p>
+            <h3>Welcome to the Admin Dashboard</h3>
+            <p>Manage rooms, bookings, customers, and users easily from the sidebar.</p>
           </div>
         )}
-
         {currentSection === 'getRooms' && (
           <div>
-            <h2>All Rooms</h2>
-            <GetRooms/>
+            <h1>All Rooms</h1>
+            <GetRooms />
           </div>
         )}
 
         {currentSection === 'createRoom' && (
           <div>
+            <h1>Create Rooms</h1>
             <CreateRoom />
           </div>
         )}
 
         {currentSection === 'getBookings' && (
           <div>
+            <h1>Get Bookings</h1>
             <GetBookings />
           </div>
         )}
 
         {currentSection === 'createBooking' && (
           <div>
-            <CreateBooking/>
+            <h1>Create Booking</h1>
+            <CreateBooking />
           </div>
         )}
 
         {currentSection === 'getCustomers' && (
-          <div>
-            <h2>All Customers</h2>
-            <GetCustomers/>
+          <div><h1>All Customers</h1>
+            <GetCustomers />
           </div>
         )}
-
         {currentSection === 'createCustomer' && (
           <div>
+            <h1>Create Customers</h1>
             <CreateCustomer />
           </div>
         )}
-
-        
       </div>
     </div>
   );

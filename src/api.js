@@ -21,14 +21,7 @@ export const createRoom = async (roomData) => {
   }
 };
 
-export const deleteRoom = async (id) => {
-    try {
-      const response = await axios.put(`${BASE_URL}/rooms/${id}`);
-      return response.data;
-    } catch (error) {
-      throw new Error('Error deleting room');
-    }
-  };
+
 
 // Booking-related API functions
 export const fetchBookings = async () => {

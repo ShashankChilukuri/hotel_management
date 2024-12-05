@@ -35,7 +35,7 @@ function CreateRoom({ fetchRooms }) {
 
   return (
     <div>
-      <h3>Create Room</h3>
+      <h1>Create Room</h1>
       <div className="form-group">
         <label htmlFor="roomNumber">Room Number</label>
         <input

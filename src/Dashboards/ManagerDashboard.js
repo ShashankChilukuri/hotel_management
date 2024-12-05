@@ -6,6 +6,7 @@ import CreateRoom from '../common/CreateRoom';
 import '../css/AdminDashboard.css';
 import CreateBooking from '../common/CreateBooking';
 import GetCustomers from '../common/GetCustomers';
+import GetUsers from '../common/GetUsers';
 
 function ManagerDashboard({onLogout}) {
   const [currentSection, setCurrentSection] = useState('getRooms');
@@ -32,53 +33,56 @@ function ManagerDashboard({onLogout}) {
 
       {/* Main content */}
       <div className="main-content">
-        <h1>{currentSection.replace(/([A-Z])/g, ' $1').toUpperCase()}</h1>
-
+      <h1><h2>Manager Dashboard</h2></h1>
         {currentSection === 'Home' && (
           <div className="welcome-section">
-            <h1>Welcome to the Manager Dashboard</h1>
+            <h3>Welcome to the Admin Dashboard</h3>
             <p>Manage rooms, bookings, customers, and users easily from the sidebar.</p>
           </div>
         )}
-
         {currentSection === 'getRooms' && (
           <div>
-            <h2>All Rooms</h2>
-            <GetRooms/>
+            <h1>All Rooms</h1>
+            <GetRooms />
           </div>
         )}
 
         {currentSection === 'createRoom' && (
           <div>
+            <h1>Create Rooms</h1>
             <CreateRoom />
           </div>
         )}
 
         {currentSection === 'getBookings' && (
           <div>
+            <h1>Get Bookings</h1>
             <GetBookings />
           </div>
         )}
 
         {currentSection === 'createBooking' && (
           <div>
-            <CreateBooking/>
+            <h1>Create Booking</h1>
+            <CreateBooking />
           </div>
         )}
 
         {currentSection === 'getCustomers' && (
-          <div>
-            <h2>All Customers</h2>
-            <GetCustomers/>
+          <div><h1>All Customers</h1>
+            <GetCustomers />
           </div>
         )}
-
-        
-
+        {currentSection === 'createCustomer' && (
+          <div>
+            <h1>Create Customers</h1>
+            <CreateCustomer />
+          </div>
+        )}
         {currentSection === 'getUsers' && (
           <div>
-            <h2>All Users</h2>
-            {/* Add User fetching code */}
+            <h1>All Users</h1>
+            <GetUsers/>
           </div>
         )}
       </div>
