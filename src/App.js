@@ -1,35 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './Login';
 import AdminDashboard from './Dashboards/AdminDashboard';
 import ManagerDashboard from './Dashboards/ManagerDashboard';
 import ReceptionistDashboard from './Dashboards/ReceptionistDashboard';
-import AddRoom from './common/AddRoom';  // Assuming this is the AddRoom component
-import AddBooking from './common/AddBooking';  // Assuming this is the AddBooking component
+import AddRoom from './common/AddRoom';  
+import AddBooking from './common/AddBooking';  
 import './css/App.css';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    // Retrieve user data from localStorage
+    const savedUser = localStorage.getItem('user');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   const handleLoginSuccess = (userData) => {
-    setUser(userData); // Update the user state with the logged-in user data
+    setUser(userData);
+    // Save user data in localStorage
+    localStorage.setItem('user', JSON.stringify(userData));
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('user'); // Clear user data from localStorage
   };
 
   // Function to redirect based on user role
-  const redirectToDashboard = () => {
+  const getRedirectRoute = () => {
     if (user) {
-      switch (user.role) {
+      const role = user.role.toLowerCase(); // Normalize role to lowercase
+      switch (role) {
         case 'admin':
-          return <Navigate to="/admin-dashboard" />;
+          return '/admin-dashboard';
         case 'manager':
-          return <Navigate to="/manager-dashboard" />;
+          return '/manager-dashboard';
         case 'receptionist':
-          return <Navigate to="/receptionist-dashboard" />;
+          return '/receptionist-dashboard';
         default:
-          return <Navigate to="/" />;
+          return '/';
       }
     }
-    return <Navigate to="/" />;
+    return '/';
   };
 
   return (
@@ -39,30 +51,30 @@ function App() {
           {/* Route for the login page */}
           <Route
             path="/"
-            element={user ? redirectToDashboard() : <Login onLoginSuccess={handleLoginSuccess} />}
+            element={user ? <Navigate to={getRedirectRoute()} /> : <Login onLoginSuccess={handleLoginSuccess} />}
           />
           {/* Direct routes to role-based dashboards */}
           <Route
             path="/admin-dashboard"
-            element={user && user.role === 'admin' ? <AdminDashboard user={user} /> : <Navigate to="/" />}
+            element={user && user.role.toLowerCase() === 'admin' ? <AdminDashboard user={user} onLogout={handleLogout} /> : <Navigate to="/" />}
           />
           <Route
             path="/manager-dashboard"
-            element={user && user.role === 'manager' ? <ManagerDashboard user={user} /> : <Navigate to="/" />}
+            element={user && user.role.toLowerCase() === 'manager' ? <ManagerDashboard user={user} onLogout={handleLogout} /> : <Navigate to="/" />}
           />
           <Route
             path="/receptionist-dashboard"
-            element={user && user.role === 'receptionist' ? <ReceptionistDashboard user={user} /> : <Navigate to="/" />}
+            element={user && user.role.toLowerCase() === 'receptionist' ? <ReceptionistDashboard user={user} onLogout={handleLogout} /> : <Navigate to="/" />}
           />
           {/* Route for adding a room */}
           <Route
             path="/add-room"
-            element={user && user.role === 'admin' ? <AddRoom /> : <Navigate to="/" />}
+            element={user && user.role.toLowerCase() === 'admin' ? <AddRoom /> : <Navigate to="/" />}
           />
           {/* Route for adding a booking */}
           <Route
             path="/add-booking"
-            element={user && user.role === 'admin' ? <AddBooking /> : <Navigate to="/" />}
+            element={user && user.role.toLowerCase() === 'admin' ? <AddBooking /> : <Navigate to="/" />}
           />
         </Routes>
       </div>
