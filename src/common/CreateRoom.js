@@ -47,14 +47,19 @@ function CreateRoom({ fetchRooms }) {
       </div>
 
       <div className="form-group">
-        <label htmlFor="roomType">Room Type</label>
-        <input
-          type="text"
-          id="roomType"
-          value={roomType}
-          onChange={(e) => setRoomType(e.target.value)}
-        />
-      </div>
+          <label htmlFor="roomType">Room</label>
+          <select
+            id="roomType"
+            value={roomType}
+            onChange={(e) => setRoomType(e.target.value)}
+            required
+          >
+            <option value="">Select Room</option>
+            <option value="Single">Single</option>
+            <option value="Suite">Suite</option>
+            <option value="Double">Double</option>
+          </select>
+        </div>
 
       <div className="form-group">
         <label htmlFor="price">Price</label>

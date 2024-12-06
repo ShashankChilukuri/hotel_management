@@ -85,7 +85,7 @@ button:disabled {
 
 /* Error message styling */
 .error-message {
-  color: #e74c3c; /* Bright red error message */
+  color: #000000; /* Bright red error message */
   font-size: 14px;
   margin-top: 10px;
 }
